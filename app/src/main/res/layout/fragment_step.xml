@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <VideoView
+        android:layout_margin="8dp"
+        android:id="@+id/video_instructions"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recipe_card_height"/>
+
+    <ImageView
+        android:layout_margin="8dp"
+        android:id="@+id/image_instructions"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recipe_card_height" />
+
+    <TextView
+        android:layout_margin="8dp"
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
