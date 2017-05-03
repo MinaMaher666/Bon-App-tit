@@ -34,12 +34,22 @@ public class RecipeFragment extends Fragment implements StepsAdapter.StepOnClick
     private IngredientsAdapter mIngredientsAdapter;
     private StepsAdapter mStepsAdapter;
 
+    private UpdateStepFragment updateFragment;
+
     public RecipeFragment(){
         mIngredients = new ArrayList<>();
         mIngredientsAdapter = new IngredientsAdapter(mIngredients);
 
         mSteps = new ArrayList<>();
         mStepsAdapter = new StepsAdapter(mSteps, this);
+    }
+
+    public interface UpdateStepFragment {
+        void update(int position);
+    }
+
+    public void setUpdateFragment(UpdateStepFragment usf) {
+        updateFragment = usf;
     }
 
     @Nullable
@@ -71,10 +81,17 @@ public class RecipeFragment extends Fragment implements StepsAdapter.StepOnClick
 
     @Override
     public void onClick(int position) {
-        Step selectedStep = mSteps.get(position);
-        Intent stepIntent = new Intent(getContext(), StepActivity.class);
-        stepIntent.putExtra(SELECTED_STEP, selectedStep);
+        if (getContext().getResources().getBoolean(R.bool.isTablet)) {
+            updateFragment.update(position);
 
-        startActivity(stepIntent);
+        } else {
+            Step selectedStep = mSteps.get(position);
+            Intent stepIntent = new Intent(getContext(), StepActivity.class);
+            stepIntent.putExtra(SELECTED_STEP, selectedStep);
+
+            startActivity(stepIntent);
+        }
+
+
     }
 }

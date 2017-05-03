@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mRecipes.clear();
         mRecipes.addAll(data);
 
+        Log.i(LOG_TAG, "onLoadFinished: " + String.valueOf(mRecipes.size()));
+
         hideLoadingIndicator();
         mainRecipesFragment.setRecipes(mRecipes);
     }

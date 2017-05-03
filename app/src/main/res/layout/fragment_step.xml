@@ -3,12 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <VideoView
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:layout_margin="8dp"
         android:id="@+id/video_instructions"
         android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/recipe_card_height"/>
+        android:layout_height="@dimen/step_video_height"/>
 
     <ImageView
         android:layout_margin="8dp"

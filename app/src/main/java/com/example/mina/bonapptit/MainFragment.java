@@ -70,6 +70,7 @@ public class MainFragment extends Fragment implements RecipesAdapter.RecipeOnCli
 
 
     public void setRecipes(List<Recipe> recipes) {
+        mRecipes.clear();
         mRecipes.addAll(recipes);
         recipesAdapter.notifyDataSetChanged();
 
