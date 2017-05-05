@@ -25,4 +25,10 @@
     <!-- ERROR MESSAGES -->
     <string name="no_networks_error">There is no Networks Available</string>
     <string name="empty_recipes_list_error">No Available Recipes</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="empty_widget_view">No Available Ingredients</string>
+
+    <!-- Add a recipe to the widget-->
+    <string name="action_add_to_widget">Add To Widget</string>
 </resources>

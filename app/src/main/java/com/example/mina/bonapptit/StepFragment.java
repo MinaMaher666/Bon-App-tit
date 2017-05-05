@@ -1,5 +1,7 @@
 package com.example.mina.bonapptit;
 
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -70,7 +72,14 @@ public class StepFragment extends Fragment {
 
     public void setImageView(String imageUrl){
         if (imageUrl != null && !TextUtils.isEmpty(imageUrl)) {
-            Picasso.with(getContext()).load(Uri.parse(imageUrl)).into(imageDescription);
+            GradientDrawable errorDrawable = new GradientDrawable();
+            errorDrawable.setShape(GradientDrawable.RECTANGLE);
+            errorDrawable.setColor(Color.GRAY);
+            Picasso.with(getContext())
+                    .load(Uri.parse(imageUrl))
+                    .placeholder(errorDrawable)
+                    .error(errorDrawable)
+                    .into(imageDescription);
             imageDescription.setVisibility(View.VISIBLE);
         }
 

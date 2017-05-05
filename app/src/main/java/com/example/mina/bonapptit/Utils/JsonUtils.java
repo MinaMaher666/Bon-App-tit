@@ -3,9 +3,9 @@ package com.example.mina.bonapptit.Utils;
 
 import android.content.Context;
 
-import com.example.mina.bonapptit.Model.Ingredient;
-import com.example.mina.bonapptit.Model.Recipe;
-import com.example.mina.bonapptit.Model.Step;
+import com.example.mina.bonapptit.Data.Ingredient;
+import com.example.mina.bonapptit.Data.Recipe;
+import com.example.mina.bonapptit.Data.Step;
 import com.example.mina.bonapptit.R;
 
 import org.json.JSONArray;

@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.mina.bonapptit.Model.Ingredient;
+import com.example.mina.bonapptit.Data.Ingredient;
 
 import java.util.List;
 

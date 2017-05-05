@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.mina.bonapptit.Model.Step;
+import com.example.mina.bonapptit.Data.Step;
 
 import java.util.List;
 
@@ -18,8 +18,9 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
     private List<Step> mSteps;
     private StepOnClickListener mOnClickListener;
 
+
     public interface StepOnClickListener {
-        public void onClick(int position);
+        void onClick(int position);
     }
 
     public StepsAdapter(List<Step> mSteps, StepOnClickListener listener) {
@@ -57,7 +58,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
         }
 
         public void bind(int position){
-            stepShortDescription.setText(mSteps.get(position).getmShortDescription());
+            stepShortDescription.setText(String.valueOf(position+1) + ". " + mSteps.get(position).getmShortDescription());
         }
 
         @Override

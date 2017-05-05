@@ -1,12 +1,17 @@
 package com.example.mina.bonapptit;
 
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mina.bonapptit.Model.Recipe;
+import com.example.mina.bonapptit.Data.Recipe;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -47,6 +52,8 @@ public class RecipesAdapter  extends RecyclerView.Adapter<RecipesAdapter.Recipes
     class RecipesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.recipe_name)
         TextView recipeNameTextView;
+        @BindView(R.id.recipe_image)
+        ImageView recipeImageView;
 
         public RecipesViewHolder(View itemView) {
             super(itemView);
@@ -59,6 +66,14 @@ public class RecipesAdapter  extends RecyclerView.Adapter<RecipesAdapter.Recipes
         public void bind(int position) {
             Recipe currentRecipe = mRecipes.get(position);
             recipeNameTextView.setText(currentRecipe.getmName());
+            GradientDrawable errorDrawable = new GradientDrawable();
+            errorDrawable.setShape(GradientDrawable.RECTANGLE);
+            errorDrawable.setColor(Color.GRAY);
+            Picasso.with(recipeImageView.getContext())
+                    .load(Uri.parse(currentRecipe.getmImageUrl()))
+                    .placeholder(errorDrawable)
+                    .error(errorDrawable)
+                    .into(recipeImageView);
         }
 
         @Override

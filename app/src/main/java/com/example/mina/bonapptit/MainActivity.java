@@ -1,6 +1,8 @@
 package com.example.mina.bonapptit;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
@@ -11,7 +13,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.mina.bonapptit.Model.Recipe;
+import com.example.mina.bonapptit.Data.Recipe;
+import com.example.mina.bonapptit.Data.RecipesContentProvider;
+import com.example.mina.bonapptit.Data.RecipesContract;
 import com.example.mina.bonapptit.Utils.JsonUtils;
 import com.example.mina.bonapptit.Utils.NetworkUtils;
 

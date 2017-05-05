@@ -3,10 +3,8 @@ package com.example.mina.bonapptit;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
-import com.example.mina.bonapptit.Model.Step;
+import com.example.mina.bonapptit.Data.Step;
 
 public class StepActivity extends AppCompatActivity {
     StepFragment stepFragment;
@@ -21,7 +19,7 @@ public class StepActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.step_fragment_container, stepFragment)
-                .commitNow();
+                .commit();
     }
 
     @Override

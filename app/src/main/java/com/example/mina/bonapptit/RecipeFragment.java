@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.mina.bonapptit.Model.Ingredient;
-import com.example.mina.bonapptit.Model.Step;
+import com.example.mina.bonapptit.Data.Ingredient;
+import com.example.mina.bonapptit.Data.Step;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +36,17 @@ public class RecipeFragment extends Fragment implements StepsAdapter.StepOnClick
 
     private UpdateStepFragment updateFragment;
 
+    private int mLastClickedPosition;
+
     public RecipeFragment(){
         mIngredients = new ArrayList<>();
         mIngredientsAdapter = new IngredientsAdapter(mIngredients);
 
         mSteps = new ArrayList<>();
         mStepsAdapter = new StepsAdapter(mSteps, this);
+
+        // For Highlighting the selected Item on tablets Layout
+        mLastClickedPosition = -1;
     }
 
     public interface UpdateStepFragment {
@@ -83,7 +88,14 @@ public class RecipeFragment extends Fragment implements StepsAdapter.StepOnClick
     public void onClick(int position) {
         if (getContext().getResources().getBoolean(R.bool.isTablet)) {
             updateFragment.update(position);
-
+            // Highlight Selected Item and remove last highlighted item
+            if (mLastClickedPosition != -1) {
+                View lastClickedItemView = stepsRecyclerView.findViewHolderForAdapterPosition(mLastClickedPosition).itemView;
+                lastClickedItemView.setBackgroundColor(ContextCompat.getColor(lastClickedItemView.getContext(), android.R.color.white));
+            }
+            View itemView = stepsRecyclerView.findViewHolderForAdapterPosition(position).itemView;
+            itemView.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), android.R.color.holo_blue_dark));
+            mLastClickedPosition = position;
         } else {
             Step selectedStep = mSteps.get(position);
             Intent stepIntent = new Intent(getContext(), StepActivity.class);

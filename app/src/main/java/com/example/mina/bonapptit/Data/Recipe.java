@@ -1,4 +1,4 @@
-package com.example.mina.bonapptit.Model;
+package com.example.mina.bonapptit.Data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
