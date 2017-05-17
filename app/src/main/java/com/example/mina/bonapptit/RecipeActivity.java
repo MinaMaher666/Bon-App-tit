@@ -60,7 +60,7 @@ public class RecipeActivity extends AppCompatActivity {
         steps = sentIntent.getParcelableArrayListExtra(MainFragment.SELECTED_RECIPE_STEPS);
 
         RecipeFragment recipeFragment = new RecipeFragment();
-
+        recipeFragment.setRecipeTitle(mCurrentRecipe.getmName());
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_recipe_container, recipeFragment)
@@ -144,6 +144,7 @@ public class RecipeActivity extends AppCompatActivity {
         for (int i=0 ; i< mIngredients.size() ; i++) {
             cvs[i] = new ContentValues();
             cvs[i].put(RecipesContract.IngredientEntry.RECIPE_ID, mCurrentRecipe.getmId());
+            cvs[i].put(RecipesContract.IngredientEntry.RECIPE_NAME, mCurrentRecipe.getmName());
             cvs[i].put(RecipesContract.IngredientEntry.INGREDIENT_NAME, mIngredients.get(i).getmIngredient());
             cvs[i].put(RecipesContract.IngredientEntry.MEASURE, mIngredients.get(i).getmMeasure());
             cvs[i].put(RecipesContract.IngredientEntry.QUANTITY, mIngredients.get(i).getmQuantity());

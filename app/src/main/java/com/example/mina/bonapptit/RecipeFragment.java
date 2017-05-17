@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.mina.bonapptit.Data.Ingredient;
 import com.example.mina.bonapptit.Data.Step;
@@ -21,10 +22,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RecipeFragment extends Fragment implements StepsAdapter.StepOnClickListener{
+    @BindView(R.id.recipe_title)
+    TextView recipeTitleTextView;
     @BindView(R.id.ingredients_recycler_view)
     RecyclerView ingredientsRecyclerView;
     @BindView(R.id.steps_recycler_view)
     RecyclerView stepsRecyclerView;
+
+    private String mRecipeTitle;
 
     public static String SELECTED_STEP = "selected_step";
 
@@ -49,6 +54,10 @@ public class RecipeFragment extends Fragment implements StepsAdapter.StepOnClick
         mLastClickedPosition = -1;
     }
 
+    public void setRecipeTitle(String recipeTitle) {
+        mRecipeTitle = recipeTitle;
+    }
+
     public interface UpdateStepFragment {
         void update(int position);
     }
@@ -62,6 +71,8 @@ public class RecipeFragment extends Fragment implements StepsAdapter.StepOnClick
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_recipe, container, false);
         ButterKnife.bind(this, rootView);
+
+        recipeTitleTextView.setText(mRecipeTitle);
 
         LinearLayoutManager ingredientsLayoutManager = new LinearLayoutManager(getContext());
         ingredientsRecyclerView.setLayoutManager(ingredientsLayoutManager);

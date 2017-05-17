@@ -5,8 +5,13 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.view.View;
 import android.widget.RemoteViews;
 
+import com.example.mina.bonapptit.Data.RecipesContentProvider;
+import com.example.mina.bonapptit.Data.RecipesContract;
 import com.example.mina.bonapptit.MainActivity;
 import com.example.mina.bonapptit.R;
 
@@ -32,7 +37,14 @@ public class BakingWidget extends AppWidgetProvider {
 
         views.setOnClickPendingIntent(R.id.widget_container, pendingIntent);
 
-
+        Uri queryUri = RecipesContentProvider.Ingredients.INGREDIENTS;
+        Cursor cursor = context.getContentResolver().query(queryUri, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            String recipeTitle = cursor.getString(cursor.getColumnIndex(RecipesContract.IngredientEntry.RECIPE_NAME));
+            views.setTextViewText(R.id.widget_recipe_title, recipeTitle);
+            views.setViewVisibility(R.id.widget_recipe_title, View.VISIBLE);
+        }
+        cursor.close();
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }

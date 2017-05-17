@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -76,6 +77,8 @@ class ListRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         }
         return views;
     }
+
+
 
     @Override
     public RemoteViews getLoadingView() {

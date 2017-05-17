@@ -13,6 +13,8 @@ public class RecipesContract {
         @DataType(DataType.Type.INTEGER)
         String RECIPE_ID = "recipe_id";
         @DataType(DataType.Type.TEXT)
+        String RECIPE_NAME = "recipe_name";
+        @DataType(DataType.Type.TEXT)
         String INGREDIENT_NAME = "ingredient";
         @DataType(DataType.Type.TEXT)
         String MEASURE = "measure";
